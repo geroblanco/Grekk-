@@ -55,6 +55,10 @@
     .wrap { width: min(var(--max), 92vw); margin: 0 auto; }
 
     /* Top bar */
+    .top{
+  background: rgba(0,0,0,.85);
+  /* backdrop-filter: blur(10px);  <-- comentá esta línea */
+}
     .top { z-index: 9999; }
     .top {
       position: sticky;
@@ -80,6 +84,14 @@
     }
     .brand b { font-family: "Playfair Display", serif; letter-spacing: .10em; }
     .brand small { color: var(--muted); letter-spacing: .12em; font-size: 12px; }
+     h1 {
+    text-shadow: 0 10px 35px rgba(0,0,0,.65);
+}
+
+  .lead, .kicker {
+  text-shadow: 0 6px 18px rgba(0,0,0,.55);
+}
+    .hero::before { filter: contrast(1.05) brightness(.72); }
 
     .nav {
       display:flex;
