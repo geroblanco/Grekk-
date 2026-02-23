@@ -55,6 +55,7 @@
     .wrap { width: min(var(--max), 92vw); margin: 0 auto; }
 
     /* Top bar */
+    .top { z-index: 9999; }
     .top {
       position: sticky;
       top: 0;
@@ -131,6 +132,10 @@
       background: #000;
       border-bottom: 1px solid var(--line);
     }
+    .hero::before,
+.hero::after {
+  pointer-events: none;
+}
     .hero::before {
       content:"";
       position:absolute;
