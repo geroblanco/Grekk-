@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GREKK | Barbería en Neuquén</title>
+
+  <!-- Meta Pixel (reemplazá TU_PIXEL_ID_AQUI) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'TU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=TU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --fg: #ffffff;
+      --muted: rgba(255,255,255,.74);
+      --line: rgba(255,255,255,.14);
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(0,0,0,.60);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 28px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #000;
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), 92vw); margin: 0 auto; }
+
+    /* Top bar */
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top .inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand {
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .brand b { font-family: "Playfair Display", serif; letter-spacing: .10em; }
+    .brand small { color: var(--muted); letter-spacing: .12em; font-size: 12px; }
+
+    .nav {
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .nav a:hover { color: #fff; }
+
+    .cta {
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: .04em;
+      font-size: 13px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.35); }
+    .btn.primary {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+    .btn.primary:hover { background: #f2f2f2; border-color:#f2f2f2; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display:flex;
+      align-items:flex-end;
+      padding: 0;
+      overflow:hidden;
+      background: #000;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset: 0;
+      background-image: url('grekk_hero_bw.jpg');
+      background-size: cover;
+      background-position: 20% 35%;
+      filter: contrast(1.05) brightness(.86);
+      transform: scale(1.02);
+    }
+    .hero::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(1200px 520px at 20% 35%, rgba(0,0,0,.18), rgba(0,0,0,.70) 60%, rgba(0,0,0,.88)),
+        linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.15));
+    }
+    .hero .content {
+      position: relative;
+      width: 100%;
+      padding: 88px 0 56px;
+    }
+    .kicker {
+      color: rgba(255,255,255,.86);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      max-width: 18ch;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 62ch;
+      margin: 0 0 22px;
+    }
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .meta {
+      margin-top: 26px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      color: rgba(255,255,255,.80);
+      font-size: 13px;
+    }
+    .chip {
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0,0,0,.30);
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: .85;
+    }
+
+    /* Sections */
+    section { padding: 74px 0; }
+    .section-title {
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: .02em;
+    }
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .grid3 {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+      font-weight: 600;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* Protocol */
+    .protocol {
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items:start;
+      margin-top: 18px;
+    }
+    .steps {
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+    }
+    .step {
+      display:flex;
+      gap: 14px;
+      padding: 18px 18px;
+      border-top: 1px solid var(--line);
+    }
+    .step:first-child { border-top: 0; }
+    .num {
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 600;
+      color: rgba(255,255,255,.9);
+      background: rgba(0,0,0,.35);
+      flex: 0 0 auto;
+    }
+    .step b {
+      display:block;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .step span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .rule {
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.45);
+      border-radius: var(--radius2);
+      padding: 22px;
+    }
+    .rule .label {
+      color: rgba(255,255,255,.86);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .rule .big {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      line-height: 1.25;
+      margin: 0 0 12px;
+    }
+    .rule p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14px; }
+
+    /* Reviews */
+    .reviews {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .reviews-head {
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .rating {
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .rating .score {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      line-height: 1;
+    }
+    .rating .sub {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .stars { letter-spacing: .10em; }
+
+    .rail {
+      display:flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 14px 2px 2px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rail::-webkit-scrollbar { height: 8px; }
+    .rail::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 999px; }
+    .review {
+      min-width: min(420px, 86vw);
+      scroll-snap-align: start;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      border-radius: var(--radius2);
+      padding: 18px 18px;
+    }
+    .review .topline {
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,.9);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .review p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* Final CTA */
+    .final {
+      text-align:center;
+      padding: 90px 0 94px;
+    }
+    .final h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin: 0 0 10px;
+    }
+    .final p {
+      margin: 0 auto 22px;
+      max-width: 65ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Mobile sticky CTA */
+    .sticky {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      display:none;
+      z-index: 60;
+    }
+    .sticky .row {
+      display:flex;
+      gap: 10px;
+    }
+    .sticky .btn { flex: 1; padding: 14px 16px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      padding: 26px 0 80px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .grid3 { grid-template-columns: 1fr; }
+      .protocol { grid-template-columns: 1fr; }
+      .section-title { flex-direction: column; align-items:flex-start; }
+    }
+    @media (max-width: 720px) {
+      .nav { display:none; }
+      .sticky { display:block; }
+      .hero .content { padding: 84px 0 50px; }
+    }
+  </style>
+
+  <script>
+    function trackReserveClick(label) {
+      try {
+        if (typeof fbq !== 'undefined') {
+          fbq('trackCustom', 'ReserveClick', { placement: label || 'unknown' });
+          fbq('track', 'Lead');
+        }
+      } catch (e) {}
+    }
+  </script>
+</head>
+
+<body>
+  <div class="top">
+    <div class="wrap inner">
+      <div class="brand" aria-label="GREKK">
+        <img src="logo_grekk.png" alt="GREKK Logo" style="height:48px;">
+        <small>Neuquén</small>
+      </div>
+
+      <nav class="nav" aria-label="Secciones">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#protocolo">Protocolo</a>
+        <a href="#resenas">Reseñas</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('top_reserve')">Reservar</a>
+        <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('top_reserve_primary')">Agendar ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap content">
+      <div class="kicker">Experiencia premium · Barbería</div>
+      <h1>La barbería donde te entienden antes de cortar.</h1>
+      <p class="lead">Estatus accesible, puntualidad y un estándar claro. Acá no se improvisa: se escucha, se asesora y se confirma antes de ejecutar.</p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('hero_primary')">Reservar turno</a>
+        <a class="btn" href="#resenas" onclick="trackReserveClick('hero_reviews')">Ver reseñas</a>
+      </div>
+
+      <div class="meta" role="list">
+        <div class="chip" role="listitem"><span class="dot"></span>4.8/5 · 276 reseñas reales</div>
+        <div class="chip" role="listitem"><span class="dot"></span>Protocolo de entendimiento</div>
+        <div class="chip" role="listitem"><span class="dot"></span>Martes a sábados</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="experiencia">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>La experiencia Grekk</h2>
+          <p>Grekk es comunidad y estándar. La marca se protege con procesos: imagen, trato y consistencia. El cliente se va hablando bien de Grekk, no solo del barbero.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Comprensión</h3>
+            <p>Antes de tocar máquina: nombre, objetivo, referencias si hace falta y diagnóstico según pelo, cráneo y remolinos.</p>
+          </div>
+          <div class="card">
+            <h3>Consistencia</h3>
+            <p>Entrada y salida fuertes. La experiencia no depende del ánimo: depende del estándar.</p>
+          </div>
+          <div class="card">
+            <h3>Presencia</h3>
+            <p>Ambiente limpio, moderno, y equipo alineado a la marca. Estatus accesible, sin exceso, con identidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="protocolo">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Protocolo de entendimiento</h2>
+          <p>Lo que más protege a Grekk: no ejecutar sin comprender. Si el cliente no se siente entendido, la experiencia se considera fallida.</p>
+        </div>
+
+        <div class="protocol">
+          <div class="steps" aria-label="Pasos del protocolo">
+            <div class="step">
+              <div class="num">1</div>
+              <div>
+                <b>Preguntar</b>
+                <span>Nombre y qué se quiere hacer. Si no está claro, se piden referencias en foto.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <div>
+                <b>Historial</b>
+                <span>Hace cuánto no se corta, qué se hizo la última vez y qué se quiere mantener o cambiar.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <div>
+                <b>Diagnóstico</b>
+                <span>Tipo de pelo, forma de cráneo, remolinos y dirección de crecimiento. Asesoramiento real.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">4</div>
+              <div>
+                <b>Confirmación</b>
+                <span>Se confirma el plan antes de ejecutar: “Entonces hacemos X, mantenemos Y, ajustamos Z. ¿Ok?”.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="rule">
+            <div class="label">Regla de oro</div>
+            <div class="big">En Grekk está prohibido ejecutar sin comprender.</div>
+            <p>Esto evita devoluciones, cuida la reputación y sostiene el estatus de marca. El cliente no habla mal del barbero: habla de Grekk.</p>
+            <div style="margin-top:16px;">
+              <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('protocol_primary')">Reservar turno</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="resenas">
+      <div class="wrap">
+        <div class="reviews-head">
+          <div class="rating">
+            <div class="score">4.8 <span class="stars">★★★★★</span></div>
+            <div class="sub">Basado en 276 reseñas reales (AgendaPro)</div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener">Ver todas</a>
+            <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('reviews_primary')">Reservar</a>
+          </div>
+        </div>
+
+        <div class="rail" aria-label="Reseñas destacadas (deslizar)">
+          <article class="review">
+            <div class="topline"><span>Matías · Barba</span><span>★★★★★</span></div>
+            <p>“Excelente atención, muy buena recepción, respeto por el horario del turno y muy limpio el salón. Mención especial para Tomy. Crack.”</p>
+          </article>
+
+          <article class="review">
+            <div class="topline"><span>Lucas · Corte</span><span>★★★★★</span></div>
+            <p>“Súper puntuales y buena atención. Los chicos súper buena onda.”</p>
+          </article>
+
+          <article class="review">
+            <div class="topline"><span>Fernando · Corte y barba</span><span>★★★★★</span></div>
+            <p>“Todo impecable. Desde la gestión del turno hasta la ambientación del lugar. Donato, un artista.”</p>
+          </article>
+
+          <article class="review">
+            <div class="topline"><span>Bastian · Corte</span><span>★★★★★</span></div>
+            <p>“Muy buena atención, súper amables y excelentes profesionales. Llevo a mis dos hijos, y los elijo siempre.”</p>
+          </article>
+
+          <article class="review">
+            <div class="topline"><span>David · Corte</span><span>★★★★★</span></div>
+            <p>“Siempre excelente… el pelo de David es muy complicado. Gero un genio. Y Gael quedó más que conforme con el corte que le hizo Tomas. Nos vemos la próxima.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Reservá en 20 segundos.</h2>
+        <p>Turnos online y experiencia consistente. Si venís por primera vez, te guiamos con asesoramiento real para que salgas con el corte exacto que buscás.</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('final_primary')">Reservar turno</a>
+          <a class="btn" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('final_secondary')">Ver disponibilidad</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Grekk Barbería · Neuquén · Carlos H. Rodríguez 420
+    </div>
+  </footer>
+
+  <div class="sticky" aria-label="Acceso rápido">
+    <div class="wrap row">
+      <a class="btn" href="#resenas" onclick="trackReserveClick('sticky_reviews')">Reseñas</a>
+      <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('sticky_primary')">Reservar</a>
+    </div>
+  </div>
+</body>
+</html>
