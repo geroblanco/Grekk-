@@ -467,6 +467,130 @@
     h1{ text-shadow: 0 10px 35px rgba(0,0,0,.70); }
     .lead, .kicker{ text-shadow: 0 6px 18px rgba(0,0,0,.60); }
 
+
+
+    /* --- WOW polish --- */
+    :root{
+      --wow-line: rgba(255,255,255,.10);
+      --wow-glow: 0 18px 60px rgba(0,0,0,.50);
+    }
+    .card, .steps, .rule, .review { box-shadow: var(--wow-glow); }
+    .card:hover, .rule:hover, .review:hover { transform: translateY(-2px); transition: transform .18s ease; }
+
+    /* Scroll reveal (subtle) */
+    .reveal{ opacity:0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.is-visible{ opacity:1; transform: translateY(0); }
+
+    /* WhatsApp floating button */
+    .wa-float{
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      z-index: 12000;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.96);
+      color: #000;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .wa-icon{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+    }
+    .wa-icon svg{ width: 20px; height: 20px; fill: #fff; }
+    .wa-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      padding-right:2px;
+    }
+    .wa-text b{ font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .wa-text span{ font-size: 13px; color: rgba(0,0,0,.72); }
+    .wa-float:active{ transform: translateY(1px); }
+
+    /* Tooltip bubble */
+    .wa-bubble{
+      position: fixed;
+      right: 20px;
+      bottom: 82px;
+      z-index: 12001;
+      max-width: 280px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.88);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+    .wa-bubble.show{ opacity: 1; transform: translateY(0); }
+    .wa-bubble .t{ font-size: 13px; color: rgba(255,255,255,.92); line-height: 1.45; }
+    .wa-bubble .arrow{
+      position:absolute;
+      right: 18px;
+      bottom: -8px;
+      width: 14px;
+      height: 14px;
+      background: rgba(0,0,0,.88);
+      border-right: 1px solid rgba(255,255,255,.14);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      transform: rotate(45deg);
+    }
+
+    /* Map section (B/W) */
+    .map-wrap{
+      border: 1px solid var(--wow-line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--wow-glow);
+    }
+    .map-iframe{
+      width: 100%;
+      height: 420px;
+      border: 0;
+      filter: grayscale(1) contrast(1.15) brightness(.85);
+    }
+    .addr{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top: 14px;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+    }
+    .addr b{ color:#fff; letter-spacing:.08em; text-transform: uppercase; font-size: 12px; }
+    .addr .pill{
+      border: 1px solid var(--wow-line);
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: rgba(0,0,0,.35);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 720px){
+      .wa-text{ display:none; }
+      .wa-float{ padding: 12px; }
+      .map-iframe{ height: 360px; }
+      .wa-bubble{ right: 14px; bottom: 78px; }
+    }
+
 </style>
 
   <script>
@@ -519,7 +643,7 @@
       </div>
     </div>
   </header>
-<section id="horarios" style="background:#000;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:100px 8%;text-align:center;">
+<section id="horarios" class="reveal" style="background:#000;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:100px 8%;text-align:center;">
   <div style="max-width:800px;margin:auto;">
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:2.2rem;margin-bottom:30px;letter-spacing:.5px;">
       Disponibilidad
@@ -546,7 +670,7 @@
 
 
   <main>
-    <section id="experiencia">
+    <section id="experiencia" class="reveal">
       <div class="wrap">
         <div class="section-title">
           <h2>La experiencia Grekk</h2>
@@ -570,7 +694,7 @@
       </div>
     </section>
 
-    <section id="protocolo">
+    <section id="protocolo" class="reveal">
       <div class="wrap">
         <div class="section-title">
           <h2>Protocolo Grekk</h2>
@@ -621,7 +745,7 @@
       </div>
     </section>
 
-    <section class="reviews" id="resenas">
+    <section class="reviews reveal" id="resenas">
       <div class="wrap">
         <div class="reviews-head">
           <div class="rating">
@@ -675,7 +799,33 @@
     </section>
   </main>
 
-  <footer>
+  
+<section id="ubicacion" class="reveal" style="padding:74px 0;">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Ubicación</h2>
+      <p>Carlos H. Rodríguez 420 · Neuquén Capital</p>
+    </div>
+
+    <div class="map-wrap">
+      <iframe class="map-iframe"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Carlos%20H.%20Rodr%C3%ADguez%20420%2C%20Neuqu%C3%A9n%2C%20Argentina&output=embed">
+      </iframe>
+    </div>
+
+    <div class="addr">
+      <div class="pill"><b>Dirección</b> · Carlos H. Rodríguez 420, Neuquén</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Carlos%20H.%20Rodr%C3%ADguez%20420%2C%20Neuqu%C3%A9n%2C%20Argentina" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('map_primary')">Reservar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
     <div class="wrap">
       Grekk Barbería · Neuquén · Carlos H. Rodríguez 420
     </div>
@@ -687,5 +837,75 @@
       <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('sticky_primary')">Reservar</a>
     </div>
   </div>
+
+<script>
+  // WhatsApp helper bubble (appears after a few seconds)
+  (function(){
+    const bubble = document.querySelector('.wa-bubble');
+    const btn = document.querySelector('.wa-float');
+    if(!bubble || !btn) return;
+
+    // Show after 5.5s, hide after 10s, also hide when user scrolls/interacts
+    let shown = false;
+    const show = () => {
+      if(shown) return;
+      shown = true;
+      bubble.classList.add('show');
+      setTimeout(() => bubble.classList.remove('show'), 10000);
+    };
+
+    setTimeout(show, 5500);
+
+    const hide = () => bubble.classList.remove('show');
+    window.addEventListener('scroll', hide, {passive:true});
+    window.addEventListener('touchstart', hide, {passive:true});
+    window.addEventListener('mousedown', hide);
+
+    // Track click if fbq exists
+    btn.addEventListener('click', function(){
+      try{
+        if(typeof fbq !== 'undefined'){
+          fbq('trackCustom', 'WhatsAppClick', {placement: 'floating'});
+        }
+      }catch(e){}
+    });
+  })();
+
+  // Subtle reveal on scroll
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) || els.length === 0) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.12});
+
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+
+
+<div class="wa-bubble" aria-live="polite">
+  <div class="t">¿Tenés dudas? Escribinos por WhatsApp y te ayudamos ahora mismo.</div>
+  <div class="arrow" aria-hidden="true"></div>
+</div>
+
+<a class="wa-float" href="https://wa.me/542994167056" target="_blank" rel="noopener" aria-label="WhatsApp Grekk">
+  <span class="wa-icon" aria-hidden="true">
+    <svg viewBox="0 0 32 32">
+      <path d="M19.11 17.53c-.23-.12-1.33-.66-1.54-.74-.2-.08-.35-.12-.5.12-.15.23-.58.74-.71.9-.13.16-.26.18-.49.06-.23-.12-.96-.35-1.83-1.13-.68-.6-1.14-1.34-1.27-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.26.35-.39.12-.13.15-.23.23-.39.08-.16.04-.29-.02-.41-.06-.12-.5-1.2-.69-1.64-.18-.44-.36-.38-.5-.39l-.43-.01c-.15 0-.39.06-.59.29-.2.23-.78.76-.78 1.86 0 1.1.8 2.16.91 2.31.12.16 1.58 2.41 3.83 3.38.54.23.96.37 1.29.47.54.17 1.03.15 1.42.09.43-.06 1.33-.54 1.52-1.06.19-.52.19-.96.13-1.06-.06-.1-.2-.16-.43-.27zM16.02 3C8.85 3 3.03 8.82 3.03 15.99c0 2.28.61 4.5 1.77 6.45L3 29l6.75-1.77a12.9 12.9 0 0 0 6.27 1.61h.01c7.17 0 12.99-5.82 12.99-12.99C29.02 8.82 23.2 3 16.02 3zm0 23.55h-.01c-2.07 0-4.1-.56-5.86-1.61l-.42-.25-4 .05 1.31-3.89-.28-.4a10.79 10.79 0 0 1-1.69-5.81c0-5.95 4.85-10.8 10.81-10.8 2.88 0 5.59 1.12 7.63 3.16a10.76 10.76 0 0 1 3.17 7.64c0 5.96-4.85 10.81-10.66 10.81z"/>
+    </svg>
+  </span>
+  <span class="wa-text">
+    <b>WhatsApp</b>
+    <span>Consultas rápidas</span>
+  </span>
+</a>
+
 </body>
 </html>
