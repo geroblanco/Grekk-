@@ -591,6 +591,112 @@
       .wa-bubble{ right: 14px; bottom: 78px; }
     }
 
+
+
+    /* --- Mobile menu --- */
+    .menu-btn{
+      display:none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      color: #fff;
+      align-items:center;
+      justify-content:center;
+      gap: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-btn span{
+      display:block;
+      width: 18px;
+      height: 2px;
+      background: rgba(255,255,255,.92);
+      border-radius: 999px;
+    }
+
+    .menu-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 9998;
+    }
+    .menu-drawer{
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(360px, 88vw);
+      background: rgba(0,0,0,.92);
+      border-left: 1px solid rgba(255,255,255,.14);
+      z-index: 9999;
+      display:flex;
+      flex-direction:column;
+      padding: 18px 16px;
+      transform: translateX(100%);
+      transition: transform .22s ease;
+    }
+    .menu-drawer.open{ transform: translateX(0); }
+    .menu-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 12px;
+    }
+    .menu-close{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-links{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      padding: 6px 2px;
+      overflow:auto;
+    }
+    .menu-links a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 14px 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      color: rgba(255,255,255,.92);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .menu-links a::after{
+      content: "›";
+      opacity: .7;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .menu-actions{
+      margin-top: auto;
+      display:flex;
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .menu-actions .btn{ flex: 1; justify-content:center; }
+
+    @media (max-width: 720px){
+      .nav{ display:none !important; }
+      .menu-btn{ display:inline-flex; }
+    }
+
 </style>
 
   <script>
@@ -612,13 +718,42 @@
         <img src="logo_grekk.png" alt="GREKK Logo" style="height:52px;">
       </div>
 
-      <nav class="nav" aria-label="Secciones">
-        <a href="#servicios">Servicios</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#protocolo">Protocolo</a>
-        <a href="#resenas">Reseñas</a>
-        <a href="#ubicacion">Ubicación</a>
+      
+      <nav class="nav" aria-label="Secciones (desktop)">
+        <a href="#servicios">Servicios</a> <a href="#experiencia">Experiencia</a> <a href="#protocolo">Protocolo</a> <a href="#resenas">Reseñas</a> <a href="#trabaja">Trabajá en Grekk</a> <a href="#ubicacion">Ubicación</a>
       </nav>
+
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="menu-overlay" id="menuOverlay" hidden></div>
+      <aside class="menu-drawer" id="mobileMenu" aria-label="Menú (móvil)" hidden>
+        <div class="menu-head">
+          <div class="brand" aria-label="GREKK">
+            <img src="logo_grekk.png" alt="GREKK Logo" style="height:42px;">
+            <small>Neuquén</small>
+          </div>
+          <button class="menu-close" type="button" aria-label="Cerrar menú">
+            ✕
+          </button>
+        </div>
+
+        <div class="menu-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#protocolo">Protocolo</a>
+          <a href="#resenas">Reseñas</a>
+          <a href="#trabaja">Trabajá en Grekk</a>
+          <a href="#ubicacion">Ubicación</a>
+        </div>
+
+        <div class="menu-actions">
+          <a class="btn" href="https://wa.me/542994167056" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn primary" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('menu_primary')">Reservar</a>
+        </div>
+      </aside>
+
 
       <div class="cta">
         <a class="btn" href="https://grekkstyle.site.agendapro.com/ar/sucursal/108439" target="_blank" rel="noopener" onclick="trackReserveClick('top_reserve')">Reservar</a>
@@ -872,6 +1007,59 @@
   </main>
 
   
+
+<section id="trabaja" class="reveal" style="padding:74px 0;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10);">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Trabajá en Grekk</h2>
+      <p>Buscamos barberos con mentalidad profesional. Estándar, presencia y consistencia.</p>
+    </div>
+
+    <div class="protocol" style="margin-top:18px;">
+      <div class="steps" style="background:rgba(255,255,255,.03);">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <b>Puntualidad y presencia</b>
+            <span>Imagen prolija, energía profesional y respeto por el tiempo del cliente.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <b>Buen trato</b>
+            <span>Escucha, comunicación clara y actitud de servicio.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <b>Técnica o potencial real</b>
+            <span>Si estás en crecimiento, evaluamos actitud y base. Si sos crack, mejor.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <b>Estándar Grekk</b>
+            <span>Proceso, consistencia y compromiso con la experiencia de marca.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="rule" style="background:rgba(0,0,0,.55);">
+        <div class="label">Proceso de ingreso</div>
+        <div class="big">No buscamos cantidad. Buscamos nivel.</div>
+        <p>Si encajás con el estándar, coordinamos una entrevista y una evaluación práctica. Queremos gente que sume a la experiencia, no que la desgaste.</p>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a class="btn primary" href="https://wa.me/542994167056?text=Hola%20Grekk%2C%20quiero%20postularme%20para%20trabajar.%20Nombre%3A%20____%20%7C%20Edad%3A%20____%20%7C%20Experiencia%3A%20____%20%7C%20Instagram%3A%20____%20%7C%20Disponibilidad%3A%20____" target="_blank" rel="noopener" onclick="try{fbq('trackCustom','WorkWithGrekkClick',{placement:'section'})}catch(e){}">Postularme por WhatsApp</a>
+          <a class="btn" href="#ubicacion">Ver ubicación</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <section id="ubicacion" class="reveal" style="padding:74px 0;">
   <div class="wrap">
     <div class="section-title">
@@ -978,6 +1166,48 @@
     <span>Consultas rápidas</span>
   </span>
 </a>
+
+
+<script>
+  (function(){
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('menuOverlay');
+    const closeBtn = document.querySelector('.menu-close');
+    if(!btn || !drawer || !overlay || !closeBtn) return;
+
+    const openMenu = () => {
+      drawer.hidden = false;
+      overlay.hidden = false;
+      requestAnimationFrame(() => drawer.classList.add('open'));
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+      drawer.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      setTimeout(() => { drawer.hidden = true; overlay.hidden = true; }, 220);
+    };
+
+    btn.addEventListener('click', openMenu);
+    overlay.addEventListener('click', closeMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close when clicking any link inside
+    drawer.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // ESC close for keyboards
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true'){
+        closeMenu();
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
